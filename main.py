@@ -69,4 +69,6 @@ async def refresh_msg(nickname, msg_box):
 
 
 if __name__ == "__main__":
-    start_server(main, debug=True, port=3000, cdn=False)
+    #start_server(main, debug=True, port=3000, cdn=False)
+    start_server(partial(main, raft_addr=raft_addr, cluster=cluster),
+                 debug=False, auto_open_webbrowser=True, port=int(os.environ.get("WEB_PORT", 0)))
